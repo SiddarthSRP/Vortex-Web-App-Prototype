@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Active State Colors (Teal/Green) */
+  --color-active-primary: #00d4aa;
+  --color-active-secondary: #00ffcc;
+  --color-active-glow: rgba(0, 212, 170, 0.4);
+  --color-active-bg: rgba(0, 212, 170, 0.1);
+
+  /* Moderate State Colors (Amber/Yellow) */
+  --color-moderate-primary: #ffb84d;
+  --color-moderate-secondary: #ffcc66;
+  --color-moderate-glow: rgba(255, 184, 77, 0.4);
+  --color-moderate-bg: rgba(255, 184, 77, 0.1);
+
+  /* Critical State Colors (Red/Crimson) */
+  --color-critical-primary: #ff4444;
+  --color-critical-secondary: #ff6666;
+  --color-critical-glow: rgba(255, 68, 68, 0.4);
+  --color-critical-bg: rgba(255, 68, 68, 0.1);
+
+  /* Neutral Colors */
+  --color-dark-bg: #0a0a0f;
+  --color-dark-surface: #121218;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-tertiary: rgba(255, 255, 255, 0.5);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-dark-bg);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}

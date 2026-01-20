@@ -1,0 +1,258 @@
+.triangle-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: all 1.5s ease;
+}
+
+.triangle-aura {
+  position: absolute;
+  width: 340%;
+  height: 340%;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.42;
+  transition: all 1.5s ease;
+}
+
+.triangle-container--active .triangle-aura {
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.2) 0%, transparent 85%);
+}
+
+.triangle-container--moderate .triangle-aura {
+  background: radial-gradient(circle, rgba(255, 184, 77, 0.19) 0%, transparent 85%);
+}
+
+.triangle-container--critical .triangle-aura {
+  background: radial-gradient(circle, rgba(255, 68, 68, 0.2) 0%, transparent 85%);
+}
+
+.triangle-halo {
+  position: absolute;
+  width: 210%;
+  height: 210%;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: all 1.5s ease;
+  animation: pulse-halo 4s ease-in-out infinite;
+}
+
+.triangle-container--active .triangle-halo {
+  background: radial-gradient(circle, var(--color-active-glow) 0%, transparent 90%);
+  box-shadow: 0 0 220px var(--color-active-glow);
+}
+
+.triangle-container--moderate .triangle-halo {
+  background: radial-gradient(circle, var(--color-moderate-glow) 0%, transparent 90%);
+  box-shadow: 0 0 220px var(--color-moderate-glow);
+}
+
+.triangle-container--critical .triangle-halo {
+  background: radial-gradient(circle, var(--color-critical-glow) 0%, transparent 90%);
+  box-shadow: 0 0 220px var(--color-critical-glow);
+}
+
+.orbit-ring {
+  position: absolute;
+  border: 1px solid;
+  border-radius: 50%;
+  opacity: 0.15;
+  transition: all 1.5s ease;
+}
+
+.orbit-ring--1 {
+  width: 320px;
+  height: 320px;
+  animation: orbit-rotate 20s linear infinite;
+  border-color: currentColor;
+}
+
+.orbit-ring--2 {
+  width: 360px;
+  height: 360px;
+  animation: orbit-rotate 25s linear infinite reverse;
+  border-color: currentColor;
+}
+
+.orbit-ring--3 {
+  width: 400px;
+  height: 400px;
+  animation: orbit-rotate 30s linear infinite;
+  border-color: currentColor;
+}
+
+.triangle-container--active .orbit-ring {
+  color: var(--color-active-primary);
+}
+
+.triangle-container--moderate .orbit-ring {
+  color: var(--color-moderate-primary);
+}
+
+.triangle-container--critical .orbit-ring {
+  color: var(--color-critical-primary);
+}
+
+.triangle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transition: all 1.5s ease;
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+.triangle--active {
+  background: linear-gradient(135deg, var(--color-active-primary), var(--color-active-secondary));
+  color: var(--color-active-primary);
+}
+
+.triangle--moderate {
+  background: linear-gradient(135deg, var(--color-moderate-primary), var(--color-moderate-secondary));
+  color: var(--color-moderate-primary);
+}
+
+.triangle--critical {
+  background: linear-gradient(135deg, var(--color-critical-primary), var(--color-critical-secondary));
+  color: var(--color-critical-primary);
+}
+
+.triangle__inner {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.5;
+}
+
+.triangle__pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  opacity: 0;
+  animation: triangle-pulse 3s ease-in-out infinite;
+}
+
+.triangle--active .triangle__pulse {
+  background: var(--color-active-secondary);
+}
+
+.triangle--moderate .triangle__pulse {
+  background: var(--color-moderate-secondary);
+}
+
+.triangle--critical .triangle__pulse {
+  background: var(--color-critical-secondary);
+}
+
+.radar-sweep {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
+  opacity: 0.1;
+  animation: radar-sweep 4s linear infinite;
+  transition: all 1.5s ease;
+}
+
+.triangle-container--active .radar-sweep {
+  background: conic-gradient(from 0deg, transparent, var(--color-active-primary), transparent);
+}
+
+.triangle-container--moderate .radar-sweep {
+  background: conic-gradient(from 0deg, transparent, var(--color-moderate-primary), transparent);
+}
+
+.triangle-container--critical .radar-sweep {
+  background: conic-gradient(from 0deg, transparent, var(--color-critical-primary), transparent);
+}
+
+@keyframes pulse-halo {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.62;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes triangle-pulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes radar-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .triangle-container {
+    width: 220px;
+    height: 220px;
+  }
+
+  .triangle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .orbit-ring--1 {
+    width: 260px;
+    height: 260px;
+  }
+
+  .orbit-ring--2 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orbit-ring--3 {
+    width: 340px;
+    height: 340px;
+  }
+}
+
+@media (max-height: 800px) {
+  .triangle-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .triangle {
+    width: 140px;
+    height: 140px;
+  }
+}

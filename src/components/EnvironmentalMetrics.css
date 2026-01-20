@@ -1,0 +1,128 @@
+.environmental-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  z-index: 10;
+  transition: all 1.5s ease;
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+.metric-card {
+  background: rgba(12, 12, 14, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 1.5s ease;
+  opacity: 0.95;
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.05), 0 12px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.18;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1), transparent 70%);
+}
+
+.metric-card--active {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.metric-card--active:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.08), 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.metric-card--moderate {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.metric-card--moderate:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.08), 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.metric-card--critical {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.metric-card--critical:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.08), 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.metric-card__label {
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.52);
+  text-transform: uppercase;
+}
+
+.metric-card__value {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+  transition: all 1.5s ease;
+}
+
+.metric-card--active .metric-card__value {
+  color: var(--color-active-primary);
+}
+
+.metric-card--moderate .metric-card__value {
+  color: var(--color-moderate-primary);
+}
+
+.metric-card--critical .metric-card__value {
+  color: var(--color-critical-primary);
+}
+
+@media (max-width: 768px) {
+  .environmental-metrics {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .metric-card {
+    padding: 0.75rem;
+  }
+
+  .metric-card__label {
+    font-size: 0.65rem;
+  }
+
+  .metric-card__value {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-height: 800px) {
+  .environmental-metrics {
+    gap: 0.5rem;
+  }
+
+  .metric-card {
+    padding: 0.6rem;
+  }
+
+  .metric-card__label {
+    font-size: 0.6rem;
+  }
+
+  .metric-card__value {
+    font-size: 0.85rem;
+  }
+}
